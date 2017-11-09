@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    function deepCopy(p, c) {
+        var c = c || {};
+        for (var i in p) {
+            if (typeof p[i] === 'object') {
+                c[i] = (p[i].constructor === Array) ? [] : {};
+                deepCopy(p[i], c[i]);
+            } else {
+                c[i] = p[i];
+            }
+        }
+        return c;
+    }
+    var obj = {
+        id:1,
+        name:'瞎猫'
+    };
+    var obj2 = deepCopy(obj);
+    obj2.id = 12;
+    console.log(obj,obj2);
+</script>
